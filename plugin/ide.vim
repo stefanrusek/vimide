@@ -27,6 +27,7 @@
 "  string = bufname(buffer_number)
 "  			The result is the name of a buffer, as it is displayed by the ":ls"
 "
+let g:IDE_BundleDir=expand("<sfile>:p:h:h")
 
 "==== Tab Movements ==================================================================
 if (v:version >= 700)
@@ -218,11 +219,7 @@ if !exists('g:IDE_isLoaded')
 	if !exists("g:IDE_MakefileList")
 		let g:IDE_MakefileList = [ "makefile" , "Makefile" ]
 	endif
-	if has('win32') || has('win64') || has('mac')
-		call s:Set("g:IDE_IconFolder",'vimfiles/icons')
-	else
-		call s:Set("g:IDE_IconFolder",'~/.vim/icons')
- 	endif
+	call s:Set("g:IDE_IconFolder",g:IDE_BundleDir.'/icons')
 	call s:Set("g:IDE_syntaxScript",'ideSyntax.pl')
 	">>>
 	" === Constant variables for the script =================================<<<
